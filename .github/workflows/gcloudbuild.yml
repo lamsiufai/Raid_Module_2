@@ -26,13 +26,25 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
 
-      - name: Write the Service Account Key to a file
+      - name: Authenticate Docker with gcloud
         run: |
           echo '${{ secrets.GCP_SA_KEY }}' > ${HOME}/gcloud-key.json
-
-      - name: Authenticate with gcloud
-        run: |
           gcloud auth activate-service-account --key-file=${HOME}/gcloud-key.json
+          gcloud auth configure-docker
+
+      - name: Docker Build
+        run: docker buildx build -t gcr.io/empirical-axon-438202-p3/my-app .
+
+      - name: Docker Push
+        run: docker push gcr.io/empirical-axon-438202-p3/my-app
+
+      # - name: Write the Service Account Key to a file
+      #   run: |
+      #     echo '${{ secrets.GCP_SA_KEY }}' > ${HOME}/gcloud-key.json
+
+      # - name: Authenticate with gcloud
+      #   run: |
+      #     gcloud auth activate-service-account --key-file=${HOME}/gcloud-key.json
             
       - name: Trigger Cloud Build
         run: |
