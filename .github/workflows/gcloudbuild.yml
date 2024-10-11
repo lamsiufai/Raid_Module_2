@@ -17,7 +17,7 @@ jobs:
         run: docker buildx build -t gcr.io/empirical-axon-438202-p3/my-app .
 
       - name: Docker Push
-        run: docker push gcr.io/empirical-axon-438202-p3/my-app
+        run: docker push gcr.io/empirical-axon-438202-p3/my-app .
 
       - name: Set up Google Cloud CLI
         uses: google-github-actions/setup-gcloud@v2
