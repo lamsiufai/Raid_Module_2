@@ -1,9 +1,9 @@
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['builds', 'submit', '--tag', 'gcr.io/empirical-axon-438202-p3/my-app', '.']
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #   args: ['builds', 'submit', '--tag', 'gcr.io/empirical-axon-438202-p3/my-app', '.']
     
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/empirical-axon-438202-p3/my-app', '.']
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['run', 'deploy', 'my-app', '--image', 'gcr.io/$PROJECT_ID/my-app', '--platform', 'managed', '--region', 'us-central1']
+    args: ['run', 'deploy', 'my-app', '--image', 'gcr.io/empirical-axon-438202-p3/my-app', '--platform', 'managed', '--region', 'us-central1']
