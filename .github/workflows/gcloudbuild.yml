@@ -22,7 +22,7 @@ jobs:
 
       - name: Write the Service Account Key to a file
         run: |
-          echo "${{ secrets.GCP_SA_KEY }}" > ${HOME}/gcloud-key.json
+          echo '${{ secrets.GCP_SA_KEY }}' > ${HOME}/gcloud-key.json
 
       - name: Authenticate with gcloud
         run: |
