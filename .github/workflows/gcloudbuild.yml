@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Docker Build
-        run: docker build -t gcr.io/empirical-axon-438202-p3/my-app
+        run: docker buildx build -t gcr.io/empirical-axon-438202-p3/my-app
 
       - name: Docker Push
         run: docker push gcr.io/empirical-axon-438202-p3/my-app
