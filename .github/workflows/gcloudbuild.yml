@@ -47,5 +47,7 @@ jobs:
       #     gcloud auth activate-service-account --key-file=${HOME}/gcloud-key.json
             
       - name: Trigger Cloud Build
+        env:
+          PORT: 8080
         run: |
           gcloud builds submit
