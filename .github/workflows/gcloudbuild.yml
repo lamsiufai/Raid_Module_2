@@ -48,6 +48,6 @@ jobs:
             
       - name: Trigger Cloud Build
         env:
-          PORT: 8080
+          PORT: 80
         run: |
           gcloud builds submit
