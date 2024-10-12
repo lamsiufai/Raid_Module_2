@@ -33,10 +33,10 @@ jobs:
           gcloud auth configure-docker
 
       - name: Docker Build
-        run: docker buildx build -t gcr.io/empirical-axon-438202-p3/my-app .
+        run: docker buildx build -t gcr.io/empirical-axon-438202-p3/my-app2 .
 
       - name: Docker Push
-        run: docker push gcr.io/empirical-axon-438202-p3/my-app
+        run: docker push gcr.io/empirical-axon-438202-p3/my-app2
 
       # - name: Write the Service Account Key to a file
       #   run: |
