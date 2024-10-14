@@ -30,7 +30,8 @@ jobs:
 
       # Step 2: Linting using ESLint
       - name: Run ESLint
-        run: npm run lint
+      #  run: npm run lint
+        run: npx eslint .
         continue-on-error: false  # This will stop the build if there are linting issues
 
       # Step 3: Unit Tests using Jest (or any other test suite)
