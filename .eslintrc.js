@@ -12,6 +12,6 @@ module.exports = {
   rules: {
     'no-undef': 'off',
     'no-prototype-builtins': 'off'
-    quotes: ['error', 'double']
+    'quotes': ['error', 'double']
   }
 };
