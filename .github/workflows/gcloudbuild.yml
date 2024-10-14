@@ -37,6 +37,10 @@ jobs:
       #  run: npx eslint .
         continue-on-error: false  # This will stop the build if there are linting issues
 
+      # Fix permissions for Jest
+      - name: Fix Jest permissions
+        run: chmod +x ./node_modules/.bin/jest
+
       # Step 3: Unit Tests using Jest (or any other test suite)
       - name: Run Unit Tests
         run: npm run test -- --coverage
