@@ -19,6 +19,54 @@ jobs:
       # - name: Docker Push
       #   run: docker push gcr.io/empirical-axon-438202-p3/my-app
 
+      # Step 1: Install Node.js (For Linting, Testing, etc.)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Specify your required Node version
+
+      - name: Install dependencies
+        run: npm install
+
+      # Step 2: Linting using ESLint
+      - name: Run ESLint
+        run: npm run lint
+        continue-on-error: false  # This will stop the build if there are linting issues
+
+      # Step 3: Unit Tests using Jest (or any other test suite)
+      - name: Run Unit Tests
+        run: npm run test -- --coverage
+        continue-on-error: false  # This will stop the build if tests fail
+
+      # Step 4: Security Scan using Snyk
+      - name: Run Snyk security scan
+        run: |
+          npm install -g snyk
+          snyk test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      # Step 5: Code Quality Analysis using SonarQube
+      - name: Run SonarQube scan
+        run: |
+          curl -sSLo sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+          unzip sonar-scanner-cli.zip -d $HOME/.sonar-scanner
+          export PATH=$HOME/.sonar-scanner/sonar-scanner-4.6.2.2472-linux/bin:$PATH
+          sonar-scanner \
+            -Dsonar.projectKey=my-project-key \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      # Step 6: Performance Benchmarking using k6
+      - name: Performance Testing with k6
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y k6
+          k6 run ./tests/performance.js # Assuming you have a k6 script
+
       - name: Set up Google Cloud CLI
         uses: google-github-actions/setup-gcloud@v2
         with:
