@@ -12,7 +12,6 @@ module.exports = {
   rules: {
     'no-undef': 'off',
     'no-prototype-builtins': 'off'
-    semi: ['error', 'always'],
     quotes: ['error', 'double']
   }
 };
