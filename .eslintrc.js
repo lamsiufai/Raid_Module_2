@@ -4,14 +4,14 @@ module.exports = {
     es2021: true,
     node: true
   },
-  extends: 'eslint:recommended',
+  extends: "eslint:recommended",
   parserOptions: {
     ecmaVersion: 12,
-    sourceType: 'module'
+    sourceType: "module"
   },
   rules: {
-    'no-undef': 'off',
-    'no-prototype-builtins': 'off',
-    'quotes': ['error', 'double']
+    "no-undef": "off",
+    "no-prototype-builtins": "off",
+    "quotes": ["error", "double"]
   }
 };
