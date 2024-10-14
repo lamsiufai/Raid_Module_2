@@ -10,7 +10,7 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    no-undef: 'off',
+    'no-undef': 'off',
     semi: ['error', 'always'],
     quotes: ['error', 'single']
   }
