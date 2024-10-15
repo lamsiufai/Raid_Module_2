@@ -96,7 +96,7 @@ jobs:
       - name: Performance Testing with k6
         run: |
           sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 33D40BC6
-          echo "deb https://dl.bintray.com/loadimpact/deb stable main" | sudo tee -a /etc/apt/sources.list
+          echo "deb https://dl.k6.io/deb stable main" | sudo tee -a /etc/apt/sources.list
           sudo apt-get update
           sudo apt-get install -y k6
           k6 run ./tests/performance.js # Assuming you have a k6 script
