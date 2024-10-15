@@ -72,7 +72,7 @@ jobs:
           curl -sSLo sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
           unzip sonar-scanner-cli.zip -d $HOME/.sonar-scanner
           export PATH=$HOME/.sonar-scanner/sonar-scanner-4.6.2.2472-linux/bin:$PATH
-          sonar-scanner \
+          sonar-scanner -X \
             -Dsonar.projectKey=my-project-key \
             -Dsonar.sources=. \
             -Dsonar.host.url=https://sonarcloud.io \
