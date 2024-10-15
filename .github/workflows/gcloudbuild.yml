@@ -13,19 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # - name: Docker Build
-      #   run: docker buildx build -t gcr.io/empirical-axon-438202-p3/my-app .
-
-      # - name: Docker Push
-      #   run: docker push gcr.io/empirical-axon-438202-p3/my-app
-
       # Step 1: Install Node.js (For Linting, Testing, etc.)
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16' # Specify your required Node version
 
-      - name: Set up JDK 17
+      - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'  # Choose the JDK distribution (temurin, zulu, etc.)
@@ -120,14 +114,6 @@ jobs:
 
       - name: Docker Push
         run: docker push gcr.io/empirical-axon-438202-p3/my-app2
-
-      # - name: Write the Service Account Key to a file
-      #   run: |
-      #     echo '${{ secrets.GCP_SA_KEY }}' > ${HOME}/gcloud-key.json
-
-      # - name: Authenticate with gcloud
-      #   run: |
-      #     gcloud auth activate-service-account --key-file=${HOME}/gcloud-key.json
             
       - name: Trigger Cloud Build
         env:
