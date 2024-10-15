@@ -72,6 +72,15 @@ jobs:
           curl -sSLo sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.2.1.4610-linux-x64.zip
           unzip sonar-scanner-cli.zip -d $HOME/.sonar-scanner
           export PATH=$HOME/.sonar-scanner/sonar-scanner-cli-6.2.1.4610-linux-x64/bin:$PATH
+          #To check if sonar scanner is installed###
+          if ! command -v sonar-scanner &> /dev/null
+          then
+            echo "SonarScanner could not be found"
+            exit 1
+          else
+            sonar-scanner --version
+          fi    
+          #####################################
           sonar-scanner -X \
             -Dsonar.projectKey=my-project-key \
             -Dsonar.sources=. \
