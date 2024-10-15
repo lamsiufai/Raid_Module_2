@@ -69,9 +69,9 @@ jobs:
       # Step 5: Code Quality Analysis using SonarQube
       - name: Run SonarQube scan
         run: |
-          curl -sSLo sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
+          curl -sSLo sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.2.1.4610-linux-x64.zip
           unzip sonar-scanner-cli.zip -d $HOME/.sonar-scanner
-          export PATH=$HOME/.sonar-scanner/sonar-scanner-4.6.2.2472-linux/bin:$PATH
+          export PATH=$HOME/.sonar-scanner/sonar-scanner-cli-6.2.1.4610-linux-x64/bin:$PATH
           sonar-scanner -X \
             -Dsonar.projectKey=my-project-key \
             -Dsonar.sources=. \
