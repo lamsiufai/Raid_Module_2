@@ -1,5 +1,5 @@
 # Use the official Nginx image as the base image
-FROM nginx:alpine
+FROM nginx:1.29.3-alpine3.22
 
 # Copy the contents of the repository to the Nginx html directory
 COPY . /usr/share/nginx/html
